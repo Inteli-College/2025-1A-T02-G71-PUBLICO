@@ -205,3 +205,103 @@ Module 2 brought important improvements to Prosply's functionality and structure
 These enhancements improved the maintainability, flexibility, and scalability of the system, while aligning the product more closely with real user needs identified in interviews and testing.
 
 ---
+
+# Module 3 - Development Report – Prosply
+
+## Project Context
+
+In this module, **Prosply** advanced toward completing its full end-to-end automation flow, from campaign creation to personalized message delivery, integrating all previously developed components into a cohesive, production-ready system.
+
+While the previous modules focused on architecture, data flow, and enrichment pipeline setup, Module 3 emphasized building **intelligent automation** across enrichment, qualification, and communication processes. 
+
+---
+
+## Key Deliverables of the Module
+
+- Implementation of the **Lead Enrichment pipeline** in production, integrating data from LinkedIn (via RapidAPI) and Google Search (via Serper API);
+- Development of the **Lead Qualification logic**, assigning a status, score, and reasoning for each lead based on campaign data and enrichment results;
+- Creation of **asynchronous queue flows** connecting enrichment, qualification, contact lookup, and message sending;
+- Deployment of the **automated email sending system**, enabling full end-to-end campaign communication;
+- Development of the **personalized message generation module**, using campaign and lead data to create contextualized communication;
+- Comprehensive **Draw.io system documentation**, detailing routers, services, models, repositories, and the visual representation of all queue flows.
+
+---
+
+## Sprint Breakdown
+
+### Sprint 1
+
+**Focus:** Review and planning.
+
+- Conducted a full review and documentation of all features already implemented in the platform;
+- Defined pending functionalities required to complete the project’s scope;
+- Created the Module 3 execution plan, including deliverables for each sprint.
+
+---
+
+### Sprint 2
+
+**Focus:** Lead Enrichment pipeline in production.
+
+- Implemented the enrichment logic in production (previously only experimental notebooks);
+- Established automated flow: campaign creation → leads added to enrichment queue;
+- Enrichment pipeline retrieves data from LinkedIn (via RapidAPI) and Google (via Serper API);
+- Created a second queue for enriched leads, preparing them for the qualification stage.
+
+---
+
+### Sprint 3
+
+**Focus:** Lead Qualification logic.
+
+- Developed and deployed the lead qualification service in production;
+- Leads from the enrichment stage are now automatically evaluated against the originating campaign’s segmentation, offer, and strategy;
+- System assigns qualification status (qualified or not), relevance score, and reasoning;
+- Qualified leads are published to a new queue for **contact lookup** (consumer implemented, logic pending).
+
+---
+
+### Sprint 4
+
+**Focus:** Automated email delivery flow.
+
+- Implemented the logic for fully **automated email sending**;
+- Leads passing through the contact lookup queue are sent to the email sending queue;
+- The queue triggers the email dispatch process, completing the automated communication loop.
+
+---
+
+### Sprint 5
+
+**Focus:** Personalized message generation and full system documentation.
+
+- Developed the **message generation logic**, now integrated into the email sending pipeline;
+- The agent uses campaign and enriched lead data to create personalized, context-aware messages;
+- Once generated, the message is saved in the database with pending status, then automatically sent through the email queue and marked as delivered;
+- Created detailed **Draw.io documentation**, describing routers, services, database models, repositories, and a visual diagram of all lead-processing queues.
+
+---
+
+## Screenshots
+
+### Visual diagram showing the queue flow
+
+<img width="1764" height="955" alt="image" src="https://github.com/user-attachments/assets/47ce78b7-d015-4269-a488-7f958c56e26c" />
+<img width="1760" height="971" alt="image" src="https://github.com/user-attachments/assets/ce2a494b-d93f-4aa7-9bd3-59a342182ff9" />
+<img width="1759" height="933" alt="image" src="https://github.com/user-attachments/assets/064eff5b-2056-452b-91b1-b7c9d9c4d93d" />
+
+### Example of an automated email successfully received (without the personalized message content)
+
+<img width="1865" height="694" alt="image" src="https://github.com/user-attachments/assets/b8fefcac-3404-4fb7-9c97-5652e2d8e830" />
+
+---
+
+## Conclusion
+
+Module 3 represented a major step toward completing the functional scope of Prosply. 
+
+The main delivary was the connection of all previous modules resulting in a pipeline capable of generating, evaluating, and contacting leads automatically.
+
+The system now supports a complete workflow from campaign creation to email delivery, with extensible queue-based architecture ensuring scalability and reliability. 
+
+---
